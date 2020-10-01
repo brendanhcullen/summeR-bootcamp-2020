@@ -1,454 +1,507 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>Lab 04: CS631</title>
+    <title>Introduction to the Tidyverse</title>
     <meta charset="utf-8" />
-    <meta name="author" content="Alison Hill" />
-    <link href="libs/remark-css/default.css" rel="stylesheet" />
-    <link rel="stylesheet" href="css/ohsu.css" type="text/css" />
-    <link rel="stylesheet" href="css/ohsu-fonts.css" type="text/css" />
+    <meta name="author" content="" />
+    <link href="libs/tile-view/tile-view.css" rel="stylesheet" />
+    <script src="libs/tile-view/tile-view.js"></script>
+    <link href="libs/panelset/panelset.css" rel="stylesheet" />
+    <script src="libs/panelset/panelset.js"></script>
+    <script src="libs/clipboard/clipboard.min.js"></script>
+    <link href="libs/shareon/shareon.min.css" rel="stylesheet" />
+    <script src="libs/shareon/shareon.min.js"></script>
+    <link href="libs/xaringanExtra-shareagain/shareagain.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-shareagain/shareagain.js"></script>
+    <link href="libs/font-awesome/css/fontawesome-all.min.css" rel="stylesheet" />
+    <link href="libs/countdown/countdown.css" rel="stylesheet" />
+    <script src="libs/countdown/countdown.js"></script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+    <link rel="stylesheet" href="assets/css/custom.css" type="text/css" />
   </head>
   <body>
     <textarea id="source">
-class: center, middle, inverse, title-slide
-
-# Lab 04: CS631
-## Working with Tidy Data
-### Alison Hill
-
----
 
 
 
 
-class: middle, center, inverse
 
-# ⌛️
 
-## Let's review 
+class: title-slide, center, middle
+
+# Introduction to the Tidyverse
 
 ---
+# Tidyverse
 
-## Data wrangling to date! 
-
-
-.pull-left[
-
-From `dplyr`:
-- `filter`
-- `arrange`
-- `mutate`
-- `group_by`
-- `summarize`
-- `glimpse`
-- `distinct`
-- `count`
-- `tally`
-- `pull`
-- `top_n`
-
-]
+The `tidyverse` is an opinionated collection of R packages designed for data science. All packages share an underlying design philosophy, grammar, and data structures.
 
 --
+***
 
-.pull-right[
-Let's add from `dplyr`:
+These packages are designed to support the natural workflow of any data analysis project, as depicted below
 
-- `select`
-- `rename`
-- `recode`
-- `case_when`
 
-From `tidyr`:
-
-- `gather`
-- `separate`
-- `spread`
-- `unite`
-
-Plus 1 other package:
-
-- `skimr::skim`
-
+.center[
+&lt;img src="images/data_science_workflow.png" width="689" /&gt;
 ]
+
+.footnote[Image from [R for Data Science](https://r4ds.had.co.nz/introduction.html)]
+
+---
+# Core tidyverse packages
+
+&lt;img src="images/tidyverse_package_load.png" width="2509" /&gt;
 
 ---
 
-# Un-tidy cakes
+# Core tidyverse packages
 
+.center[
+&lt;img src="images/tidyverse_packages.png" width="2516" /&gt;
+]
 
+.footnote[Image from [Sylvia Canelón](https://github.com/spcanelon/2020-rladies-chi-tidyverse)]
 
+---
+# Core tidyverse packages
+
+.center[
+&lt;img src="images/tidyverse_packages_purpose.png" width="90%" /&gt;
+]
+
+.footnote[Image from [Mine Çetinkaya-Rundel](https://education.rstudio.com/blog/2020/07/teaching-the-tidyverse-in-2020-part-1-getting-started/)]
+---
+background-image: url(images/hex/readr.png)
+background-position: 90% 5%
+background-size: 10%
+
+.footnote[Slide adapted from [Sylvia Canelón](https://github.com/spcanelon/2020-rladies-chi-tidyverse)]
+  
+# `readr`
+
+.panelset[
+
+.panel[.panel-name[Overview]
 
 .pull-left[
+Importing data is the very first step! &lt;br/&gt; You can use `readr` to import rectangular data.
+]
+.pull-right[
+Functions for different file types
++ comma separated (CSV) files with `read_csv()`
++ tab separated files with `read_tsv()`
++ general delimited files with `read_delim()`
++ fixed width files with `read_fwf()`
++ tabular files where columns are separated by white-space with `read_table()`
++ web log files with `read_log()` 
 
-```
-# A tibble: 2 x 4
-  series challenge    cake pie_tart
-  &lt;fct&gt;  &lt;chr&gt;       &lt;dbl&gt;    &lt;dbl&gt;
-1 1      showstopper     5        5
-2 1      signature      12        4
-```
-
-```
-# A tibble: 2 x 4
-  series challenge    cake pie_tart
-  &lt;fct&gt;  &lt;chr&gt;       &lt;dbl&gt;    &lt;dbl&gt;
-1 2      showstopper     8       17
-2 2      signature      21        7
-```
+]
 ]
 
---
+.panel[.panel-name[Cheatsheet]
 
+
+![](https://raw.githubusercontent.com/rstudio/cheatsheets/master/pngs/thumbnails/data-import-cheatsheet-thumbs.png)
+
+<i class="fas  fa-file-pdf "></i> [Download PDF](https://github.com/rstudio/cheatsheets/raw/master/data-import.pdf)
+]
+
+.panel[.panel-name[Reading]
+
+.left-column[
+&lt;img src="images/r4ds-cover.png" width="667" /&gt;
+]
+
+.right-column[
+## [Ch 11: Data import](https://r4ds.had.co.nz/data-import.html)
+]
+]
+
+.panel[.panel-name[Reference]
+
+&lt;iframe src="https://readr.tidyverse.org/" width="100%" height="400px"&gt;&lt;/iframe&gt;
+]
+]
+
+---
+background-image: url(images/hex/tibble.png)
+background-position: 90% 5%
+background-size: 10%
+
+.footnote[Slide adapted from [Sylvia Canelón](https://github.com/spcanelon/2020-rladies-chi-tidyverse)]
+
+# `tibble`
+
+.panelset[
+
+.panel[.panel-name[Overview]
+
+.pull-left[
+A `tibble` is much like the data frame in base R, but optimized for use in the tidyverse.  
+
+Among other features, it has nicer printing methods. 
+]
+]
+
+.panel[.panel-name[Cheatsheet]
+
+
+![](https://raw.githubusercontent.com/rstudio/cheatsheets/master/pngs/thumbnails/data-import-cheatsheet-thumbs.png)
+
+<i class="fas  fa-file-pdf "></i> [Download PDF](https://github.com/rstudio/cheatsheets/raw/master/data-import.pdf)
+]
+
+.panel[.panel-name[Reading]
+
+.left-column[
+&lt;img src="images/r4ds-cover.png" width="667" /&gt;
+]
+
+.right-column[
+## [Ch 10: Tibbles](https://r4ds.had.co.nz/tibbles.html)
+
+]
+]
+
+.panel[.panel-name[Reference]
+
+&lt;iframe src="https://tibble.tidyverse.org/" width="100%" height="400px"&gt;&lt;/iframe&gt;
+]
+]
+
+---
+background-image: url(images/hex/ggplot2.png)
+background-position: 90% 5%
+background-size: 10%
+
+.footnote[Slide adapted from [Sylvia Canelón](https://github.com/spcanelon/2020-rladies-chi-tidyverse)]
+
+# `ggplot2`
+
+.panelset[
+.panel[.panel-name[Overview]
+
+`ggplot2` uses the "Grammar of Graphics" to create a plot. Check out some examples of what's possible from the [ggplot2 extensions gallery](https://exts.ggplot2.tidyverse.org/gallery/).
+
+&lt;iframe src="https://exts.ggplot2.tidyverse.org/gallery/" width="100%" height="325px"&gt;&lt;/iframe&gt;
+]
+
+
+.panel[.panel-name[Cheatsheet]
+
+![](https://raw.githubusercontent.com/rstudio/cheatsheets/master/pngs/thumbnails/data-visualization-cheatsheet-thumbs.png)
+
+
+<i class="fas  fa-file-pdf "></i> [Download PDF](https://github.com/rstudio/cheatsheets/raw/master/data-visualization-2.1.pdf)
+]
+
+.panel[.panel-name[Reading]
+
+.left-column[
+&lt;img src="images/r4ds-cover.png" width="667" /&gt;
+]
+
+.right-column[
+## [Ch 3: Data visualization](https://r4ds.had.co.nz/data-visualisation.html)
+
+]
+]
+
+.panel[.panel-name[Reference]
+
+&lt;iframe src="https://ggplot2.tidyverse.org/" width="100%" height="400px"&gt;&lt;/iframe&gt;
+]
+]
+
+---
+background-image: url(images/hex/dplyr.png)
+background-position: 90% 5%
+background-size: 10%
+
+.footnote[Slide adapted from [Sylvia Canelón](https://github.com/spcanelon/2020-rladies-chi-tidyverse)]
+
+# `dplyr`
+
+.panelset[
+.panel[.panel-name[Overview]
+
+.pull-left[
+`dplyr` includes a host of functions that perform specific and incremental data transformation steps to help you to wrangle your data into exactly the right form you need. 
+]
 
 .pull-right[
++ Pick observations by their values with `filter()`.
 
-```
-# A tibble: 2 x 4
-  series challenge    cake pie_tart
-  &lt;fct&gt;  &lt;chr&gt;       &lt;dbl&gt;    &lt;dbl&gt;
-1 3      showstopper    12       17
-2 3      signature      24       12
-```
++ Reorder the rows with `arrange()`.
 
-```
-# A tibble: 2 x 4
-  series challenge    cake pie_tart
-  &lt;fct&gt;  &lt;chr&gt;       &lt;dbl&gt;    &lt;dbl&gt;
-1 4      showstopper    27        9
-2 4      signature      11       15
-```
++ Pick variables by their names `select()`.
+
++ Create new variables with functions of existing variables `mutate()`.
+
++ Collapse many values down to a single summary `summarize()`.
+
+]
+]
+
+.panel[.panel-name[Cheatsheet]
+
+![](https://raw.githubusercontent.com/rstudio/cheatsheets/master/pngs/thumbnails/data-transformation-cheatsheet-thumbs.png)
+
+<i class="fas  fa-file-pdf "></i> [Download PDF](https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf)
+]
+
+
+.panel[.panel-name[Reading]
+
+.left-column[
+&lt;img src="images/r4ds-cover.png" width="667" /&gt;
+]
+
+.right-column[
+## [Ch 5: Data transformation](https://r4ds.had.co.nz/transform.html)
+]
+]
+
+.panel[.panel-name[Reference]
+
+&lt;iframe src="https://dplyr.tidyverse.org/" width="100%" height="400px"&gt;&lt;/iframe&gt;
+]
 ]
 
 ---
+background-image: url(images/hex/forcats.png)
+background-position: 90% 5%
+background-size: 10%
 
-# Still un-tidy cakes
+.footnote[Slide adapted from [Sylvia Canelón](https://github.com/spcanelon/2020-rladies-chi-tidyverse)]
 
+# `forcats`
 
+.panelset[
 
-```r
-cakes_untidy %&gt;% 
-  bind_rows()
-```
+.panel[.panel-name[Overview]
+.pull-left[
+`forcats` is great for working with **categorical variables** or factors. 
+]
 
-```
-# A tibble: 16 x 4
-   series challenge    cake pie_tart
-   &lt;fct&gt;  &lt;chr&gt;       &lt;dbl&gt;    &lt;dbl&gt;
- 1 1      showstopper     5        5
- 2 1      signature      12        4
- 3 2      showstopper     8       17
- 4 2      signature      21        7
- 5 3      showstopper    12       17
- 6 3      signature      24       12
- 7 4      showstopper    27        9
- 8 4      signature      11       15
- 9 5      showstopper    20        6
-10 5      signature       4        7
-11 6      showstopper    12        0
-12 6      signature      20       17
-13 7      showstopper    19        3
-14 7      signature      11       10
-15 8      showstopper    26       12
-16 8      signature      21        8
-```
+.pull-right[
+A few key functions:
++ `fct_reorder()`: Reordering a factor by another variable
 
++ `fct_infreq()`: Reordering a factor by the frequency of values
 
----
++ `fct_relevel()`: Changing the order of a factor by hand
 
-# Finally tidy cakes
++ `fct_lump()`: Collapsing the least/most frequent values of a factor into “other”
+]
+]
 
+.panel[.panel-name[Cheatsheet]
 
-```r
-cakes_tidy &lt;- cakes_untidy %&gt;% 
-  gather(bake_type, num_bakes, cake:pie_tart, 
-         factor_key = TRUE) %&gt;% 
-  arrange(series)
-cakes_tidy
-```
+.center[
+&lt;img src="https://raw.githubusercontent.com/rstudio/cheatsheets/master/pngs/thumbnails/forcats-cheatsheet-thumbs.png" width="60%" /&gt;
 
-```
-# A tibble: 32 x 4
-   series challenge   bake_type num_bakes
-   &lt;fct&gt;  &lt;chr&gt;       &lt;fct&gt;         &lt;dbl&gt;
- 1 1      showstopper cake              5
- 2 1      signature   cake             12
- 3 1      showstopper pie_tart          5
- 4 1      signature   pie_tart          4
- 5 2      showstopper cake              8
- 6 2      signature   cake             21
- 7 2      showstopper pie_tart         17
- 8 2      signature   pie_tart          7
- 9 3      showstopper cake             12
-10 3      signature   cake             24
-# … with 22 more rows
-```
+<i class="fas  fa-file-pdf "></i> [Download PDF](https://github.com/rstudio/cheatsheets/raw/master/factors.pdf)
+]
+]
+
+.panel[.panel-name[Reading]
+
+.left-column[
+&lt;img src="images/r4ds-cover.png" width="667" /&gt;
+]
+
+.right-column[
+## [Ch 15: Factors](https://r4ds.had.co.nz/factors.html)
+]
+]
+
+.panel[.panel-name[Reference]
+
+&lt;iframe src="https://forcats.tidyverse.org/" width="100%" height="400px"&gt;&lt;/iframe&gt;
+]
+]
 
 ---
-class: middle, inverse, center
+background-image: url(images/hex/stringr.png)
+background-position: 90% 5%
+background-size: 10%
 
-## Know Your Tidy Data
+.footnote[Slide adapted from [Sylvia Canelón](https://github.com/spcanelon/2020-rladies-chi-tidyverse)]
 
----
+# `stringr`
 
+.panelset[
 
-```r
-glimpse(cakes_tidy)
-```
+.panel[.panel-name[Overview]
+.pull-left[
+`stringr` helps us manipulate strings! The package includes many functions to help us with **regular expressions**, which are a concise language for describing patterns in strings.
+]
 
-```
-Observations: 32
-Variables: 4
-$ series    &lt;fct&gt; 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5,…
-$ challenge &lt;chr&gt; "showstopper", "signature", "showstopper", "signature", "sh…
-$ bake_type &lt;fct&gt; cake, cake, pie_tart, pie_tart, cake, cake, pie_tart, pie_t…
-$ num_bakes &lt;dbl&gt; 5, 12, 5, 4, 8, 21, 17, 7, 12, 24, 17, 12, 27, 11, 9, 15, 2…
-```
+.pull-right[
+`stringr` allows you to
 
+-  detect matches
+-  subset strings
+-  manage string lengths
+-  mutate strings
+-  join and split strings
+-  order strings
+-  ...and more!
+]
+]
 
----
-
-
-```r
-library(skimr)
-skim(cakes_tidy)
-```
-
-
-Table: Data summary
-
-                                      
--------------------------  -----------
-Name                       cakes_tidy 
-Number of rows             32         
-Number of columns          4          
-_______________________               
-Column type frequency:                
-character                  1          
-factor                     2          
-numeric                    1          
-________________________              
-Group variables            None       
--------------------------  -----------
+.panel[.panel-name[Cheatsheet]
 
 
-**Variable type: character**
+![](https://raw.githubusercontent.com/rstudio/cheatsheets/master/pngs/thumbnails/strings-cheatsheet-thumbs.png)&lt;!-- --&gt;
 
-skim_variable    n_missing   complete_rate   min   max   empty   n_unique   whitespace
---------------  ----------  --------------  ----  ----  ------  ---------  -----------
-challenge                0               1     9    11       0          2            0
+<i class="fas  fa-file-pdf "></i> [Download PDF](https://github.com/rstudio/cheatsheets/raw/master/strings.pdf)
+]
 
+.panel[.panel-name[Reading]
 
-**Variable type: factor**
+.left-column[
+&lt;img src="images/r4ds-cover.png" width="667" /&gt;
+]
 
-skim_variable    n_missing   complete_rate  ordered    n_unique  top_counts             
---------------  ----------  --------------  --------  ---------  -----------------------
-series                   0               1  FALSE             8  1: 4, 2: 4, 3: 4, 4: 4 
-bake_type                0               1  FALSE             2  cak: 16, pie: 16       
+.right-column[
+## [Ch 14: Strings](https://r4ds.had.co.nz/strings.html)
+]
+]
 
+.panel[.panel-name[Reference]
 
-**Variable type: numeric**
-
-skim_variable    n_missing   complete_rate    mean    sd   p0   p25   p50    p75   p100  hist  
---------------  ----------  --------------  ------  ----  ---  ----  ----  -----  -----  ------
-num_bakes                0               1   12.56   7.1    0     7    12   17.5     27  ▆▇▇▇▃ 
+&lt;iframe src="https://stringr.tidyverse.org/" width="100%" height="400px"&gt;&lt;/iframe&gt;
+]
+]
 
 ---
+background-image: url(images/hex/tidyr.png)
+background-position: 90% 5%
+background-size: 10%
+
+.footnote[Slide adapted from [Sylvia Canelón](https://github.com/spcanelon/2020-rladies-chi-tidyverse)]
+
+# `tidyr`
+
+.panelset[
+
+.panel[.panel-name[Overview]
+
+.pull-left[
+`tidyr` allows you to reshape raw "untidy" data into a "tidy" format.
+
+Here is an example of what a tidy dataframe looks like:
+
+![](https://d33wubrfki0l68.cloudfront.net/6f1ddb544fc5c69a2478e444ab8112fb0eea23f8/91adc/images/tidy-1.png)
+]
+
+.pull-right[
+There are three interrelated rules which make a dataset tidy:
+
+- Each variable must have its own column.
+- Each observation must have its own row.
+- Each value must have its own cell.
+]
+]
+
+.panel[.panel-name[Cheatsheet]
 
 
-```r
-skim(cakes_tidy) %&gt;% 
-  summary() 
-```
+![](https://raw.githubusercontent.com/rstudio/cheatsheets/master/pngs/thumbnails/data-import-cheatsheet-thumbs.png)&lt;!-- --&gt;
 
-Table: Data summary
+<i class="fas  fa-file-pdf "></i> [Download PDF](https://github.com/rstudio/cheatsheets/raw/master/data-import.pdf)
+]
 
-                                      
--------------------------  -----------
-Name                       cakes_tidy 
-Number of rows             32         
-Number of columns          4          
-_______________________               
-Column type frequency:                
-character                  1          
-factor                     2          
-numeric                    1          
-________________________              
-Group variables            None       
--------------------------  -----------
+.panel[.panel-name[Reading]
 
+.left-column[
+&lt;img src="images/r4ds-cover.png" width="667" /&gt;
+]
 
----
-class: middle, inverse, center
+.right-column[
+## [Ch 12: Tidy data](https://r4ds.had.co.nz/tidy-data.html)
+]
+]
 
-## Benefits of Tidy Data
+.panel[.panel-name[Reference]
 
-
----
-
-
-
-```r
-cakes_tidy %&gt;% 
-  count(challenge, bake_type, wt = num_bakes, sort = TRUE)
-```
-
-```
-# A tibble: 4 x 3
-  challenge   bake_type     n
-  &lt;chr&gt;       &lt;fct&gt;     &lt;dbl&gt;
-1 showstopper cake        129
-2 signature   cake        124
-3 signature   pie_tart     80
-4 showstopper pie_tart     69
-```
-
----
-
-
-
-```r
-cakes_tidy %&gt;% 
-  count(series, bake_type, wt = num_bakes)
-```
-
-```
-# A tibble: 16 x 3
-   series bake_type     n
-   &lt;fct&gt;  &lt;fct&gt;     &lt;dbl&gt;
- 1 1      cake         17
- 2 1      pie_tart      9
- 3 2      cake         29
- 4 2      pie_tart     24
- 5 3      cake         36
- 6 3      pie_tart     29
- 7 4      cake         38
- 8 4      pie_tart     24
- 9 5      cake         24
-10 5      pie_tart     13
-11 6      cake         32
-12 6      pie_tart     17
-13 7      cake         30
-14 7      pie_tart     13
-15 8      cake         47
-16 8      pie_tart     20
-```
+&lt;iframe src="https://tidyr.tidyverse.org/" width="100%" height="400px"&gt;&lt;/iframe&gt;
+]
+]
 
 ---
+background-image: url(images/hex/purrr.png)
+background-position: 90% 5%
+background-size: 10%
 
+.footnote[Slide adapted from [Sylvia Canelón](https://github.com/spcanelon/2020-rladies-chi-tidyverse)]
 
-```r
-library(skimr)
-cakes_tidy %&gt;% 
-  group_by(bake_type) %&gt;% 
-  select_if(is.numeric) %&gt;% 
-  skim()
-```
+# `purrr`
 
+.panelset[
 
-Table: Data summary
+.panel[.panel-name[Overview]
+.pull-left[
+`purrr` provides tools for working with functions and vectors -- in particular, repeating the same operations many times concisely and efficiently
 
-                                      
--------------------------  -----------
-Name                       Piped data 
-Number of rows             32         
-Number of columns          2          
-_______________________               
-Column type frequency:                
-numeric                    1          
-________________________              
-Group variables            bake_type  
--------------------------  -----------
+The `map()` family of functions helps us replace for loops, &lt;br/&gt; making our code easier to read and more succinct.
+]
+]
 
+.panel[.panel-name[Cheatsheet]
 
-**Variable type: numeric**
+.center[
+![](https://raw.githubusercontent.com/rstudio/cheatsheets/master/pngs/thumbnails/purrr-cheatsheet-thumbs.png)&lt;!-- --&gt;
 
-skim_variable   bake_type    n_missing   complete_rate    mean     sd   p0     p25    p50     p75   p100  hist  
---------------  ----------  ----------  --------------  ------  -----  ---  ------  -----  ------  -----  ------
-num_bakes       cake                 0               1   15.81   7.31    4   11.00   15.5   21.00     27  ▅▇▁▇▅ 
-num_bakes       pie_tart             0               1    9.31   5.30    0    5.75    8.5   12.75     17  ▃▅▇▃▆ 
+<i class="fas  fa-file-pdf "></i> [Download PDF](https://github.com/rstudio/cheatsheets/raw/master/purrr.pdf)
+]
+]
 
-See: https://suzanbaert.netlify.com/2018/01/dplyr-tutorial-1/
+.panel[.panel-name[Reading]
 
----
+.left-column[
+&lt;img src="images/r4ds-cover.png" width="667" /&gt;
+]
 
+.right-column[
+## [Ch 21: Iteration](https://r4ds.had.co.nz/iteration.html)
+]
+]
 
+.panel[.panel-name[Reference]
 
-```r
-cakes_by_series &lt;- cakes_tidy %&gt;% 
-  count(series, bake_type, wt = num_bakes) 
-cakes_by_series
-```
-
-```
-# A tibble: 16 x 3
-   series bake_type     n
-   &lt;fct&gt;  &lt;fct&gt;     &lt;dbl&gt;
- 1 1      cake         17
- 2 1      pie_tart      9
- 3 2      cake         29
- 4 2      pie_tart     24
- 5 3      cake         36
- 6 3      pie_tart     29
- 7 4      cake         38
- 8 4      pie_tart     24
- 9 5      cake         24
-10 5      pie_tart     13
-11 6      cake         32
-12 6      pie_tart     17
-13 7      cake         30
-14 7      pie_tart     13
-15 8      cake         47
-16 8      pie_tart     20
-```
+&lt;iframe src="https://purrr.tidyverse.org/" width="100%" height="400px"&gt;&lt;/iframe&gt;
+]
+]
 
 ---
+class: inverse, center, middle
+# Q &amp; A
 
-
-
-```r
-ggplot(cakes_by_series, aes(x = series, y = n, 
-                            color = bake_type,
-                            group = bake_type)) +
-  geom_point() +
-  geom_line() +
-  expand_limits(y = 0)
-```
-
-&lt;img src="04-slides_files/figure-html/unnamed-chunk-13-1.png" width="80%" style="display: block; margin: auto;" /&gt;
+<div class="countdown" id="timer_5f6c28af" style="right:0;bottom:0;" data-warnwhen="0">
+<code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
 
 ---
-class: middle, inverse, center
+class: inverse, center, middle
+# Next up...
 
-
-## You have 2 challenges today!
-
-Described [here](04-challenge.html)
-Reference lab [here](04-distributions.html)
-
+## Importing data &amp; Project-oriented workflows
 
 ---
-class: middle, inverse, center
+class: inverse, center, middle
+# Break! 
 
-# 🍱
-
-## Tidy Data:
-
-http://r4ds.had.co.nz/tidy-data.html
-
-http://moderndive.com/4-tidy.html
-
-http://vita.had.co.nz/papers/tidy-data.html
-
-https://github.com/jennybc/lotr-tidy#readme
+<div class="countdown" id="timer_5f6c2ab2" style="right:0;bottom:0;" data-warnwhen="0">
+<code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
-<script>var slideshow = remark.create({
-"highlightStyle": "atelier-lakeside-light",
-"highlightLines": true,
-"countIncrementalSlides": false
-});
+<script>var slideshow = remark.create();
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   window.dispatchEvent(new Event('resize'));
 });
@@ -488,25 +541,24 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     deleted = true;
   });
 })();
-// adds .remark-code-has-line-highlighted class to <pre> parent elements
-// of code chunks containing highlighted lines with class .remark-code-line-highlighted
-(function(d) {
-  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
-  const preParents = [];
-  const findPreParent = function(line, p = 0) {
-    if (p > 1) return null; // traverse up no further than grandparent
-    const el = line.parentElement;
-    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
-  };
-
-  for (let line of hlines) {
-    let pre = findPreParent(line);
-    if (pre && !preParents.includes(pre)) preParents.push(pre);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
   }
-  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
-})(document);</script>
-
-<script>
+})();
 (function() {
   var links = document.getElementsByTagName('a');
   for (var i = 0; i < links.length; i++) {
@@ -514,8 +566,7 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
       links[i].target = '_blank';
     }
   }
-})();
-</script>
+})();</script>
 
 <script>
 slideshow._releaseMath = function(el) {

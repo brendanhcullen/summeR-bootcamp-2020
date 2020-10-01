@@ -1,32 +1,37 @@
 ---
 authors:
 - admin
-bio: This course will give students a foundation in the principles and practice of
-  data visualization, particularly as applied to scientific and technical data.
+bio: This bootcamp gives a gentle introduction to R and RStudio, transforming and visualizing data with the tidyverse, and the basics of R Markdown.
 email: ""
 name: null
 organizations:
-- name: Oregon Health & Science University
-  url: https://www.ohsu.edu/
-role: null
+- name: "University of Oregon"
+role: "Department of Psychology"
 social:
 - icon: r-project
   icon_pack: fab
-  link: https://rstudio.cloud
-- icon: piazza
-  icon_pack: ai
-  link: https://piazza.com/
+  link: https://bit.ly/3caJRCN
+- icon: slack
+  icon_pack: fab
+  link: https://uodatascience.slack.com/
 - icon: github
   icon_pack: fab
-  link: https://github.com/apreshill/dataviz-intro
+  link: https://github.com/uopsych/summeR-bootcamp-2020
 superuser: true
 user_groups:
 - Researchers
 - Visitors
 ---
 
+# UO Psych R Bootcamp
+
 <br>
 
-This course will give students a foundation in the principles and practice of data visualization, particularly as applied to scientific and technical data. 
+Welcome to the 3rd annual R Bootcamp hosted by the [Department of Psychology](https://psychology.uoregon.edu/) at the University of Oregon. If you have any questions or concerns, please contact [Brendan Cullen](https://bcullen.rbind.io/) at [bcullen@uoregon.edu](mailto:bcullen@uoregon.edu).
 
-We will have weekly lectures, covering a wide variety of topics including human perception, color theory, principles of visual design, etc. We will also have weekly hands-on laboratory sessions in which students will have the opportunity to put the lecture material into practice. This year, we will be adding additional emphasis on larger issues of scientific communication— after all, that's one of the main reasons we make visualizations! 
+This website contains all of the details and materials for the bootcamp, along with resources for further learning and practice. The materials shared here are free and open source and may be shared and adpated under the [Creative Commons License](https://creativecommons.org/licenses/by/4.0/). 
+
+The materials have been designed such that you should be able to work through the slides and exercises at your own pace if you're not able to attend the bootcamp sessions. Happy learning! 
+
+
+

@@ -1,0 +1,61 @@
+---
+title: Basics of R & RStudio
+author: ''
+date: '2020-09-14'
+slug: []
+categories: []
+tags: []
+subtitle: ''
+summary: ' '
+authors: []
+lastmod: '2020-09-15T15:02:15-07:00'
+featured: no
+image:
+  caption: "Artwork by [@allison_horst](https://twitter.com/allison_horst)"
+  focal_point: ''
+  preview_only: no
+projects: []
+links:
+- icon: film
+  icon_pack: fas
+  name: Slides
+  url: /slides/01-slides.html
+- icon: dumbbell
+  icon_pack: fas
+  name: Exercises
+  url: https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/uopsych/summeR-bootcamp-2020/tree/master/exercises/01_rstudio_basics
+- icon: readme
+  icon_pack: fab
+  name: Cheat Sheet
+  url: https://github.com/rstudio/cheatsheets/raw/master/rstudio-ide.pdf
+- icon: laptop-code
+  icon_pack: fas
+  name: Primer
+  url: https://rstudio.cloud/learn/primers/1.2
+---
+
+Learning R can feel very intimidating, and getting started is often the hardest part. Don't fret! If you're completely new to R or programming in general, it is normal to feel frustrated and/or hopeless at first. But learning a few basics can go a long way and empower you to take the next step. And even if you've been using R for a while, I always find that I learn something new and useful when going back over the fundamentals. 
+
+***
+
+
+### Slides
+
+```{r echo=FALSE}
+xaringanExtra::embed_xaringan(
+  url = "/slides/01-slides.html",
+  ratio = "16:9"
+)
+```
+
+<br>
+
+### Further Reading
+
+:::book
+1. [*Getting Started with Data in R*](https://moderndive.netlify.app/1-getting-started.html) (chapter from [ModernDive](https://moderndive.netlify.app/))
+
+2. A [GIF-based introduction](https://www.pipinghotdata.com/posts/2020-09-07-introducing-the-rstudio-ide-and-r-markdown/) to RStudio
+
+3. [Tour of RStudio](https://rladiessydney.org/courses/ryouwithme/01-basicbasics-1/) from R-Ladies Sydney
+:::
